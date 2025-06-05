@@ -1,116 +1,58 @@
 import streamlit as st
 
-import pandas as pd
+st.title("🕶学生 杨元源-数字档案",anchor='sixth')
+st.title("🔑基础信息",anchor='four')
+st.text("学号ID:23051170130")
 
-from datetime import datetime
+st.header('注册时间: :green[2023-10-01 08:30:17] |精神状态: ✅ 正常 ',anchor='one')
+st.header('当前教师: :green[实训301] |精神状态: ✅ 绝密 ',anchor='one')
 
-
-
-# 主标题
-
-st.title("🕶️ 学生 小陆 - 数字档案")
-
-
-
-# 基础信息章节
-
-st.header("🔑 基础信息")
-
-st.text("学生ID: NEO-2023-001")
-
-st.markdown("**注册时间**: `2023-10-01 08:30:17` | **精神状态**: ✅ 正常")
-
-st.markdown("**当前教室**: `实训楼301` | **安全等级**: `绝密`")
-
-
-
-# 技能矩阵章节
-
-st.header("📊 技能矩阵")
-
+st.header("🧠 技能矩阵")
 col1, col2, col3 = st.columns(3)
+with col1:
+    st.metric("Python 编程", "95%", "5%")
+with col2:
+    st.metric("Streamlit 开发", "87%", "3%")
+with col3:
+    st.metric("科幻创意", "68%", "-2%")
+st.header("📜 任务日志")
 
-col1.metric("C语言", "95%", "2%", help="近期训练提升") 
+st.header("Streamlit课程进度")
+st.write("Streamlit课程进度")
+st.progress(0.5)  # 模拟进度条
 
-col2.metric("Python", "87%", "-1%")
-
-col3.metric("Java", "68%", "-10%", help="用则进废则退")
-
-
-
-# 进度条展示
-
-st.subheader("Streamlit课程进度")
-
-st.progress(28, text="Streamlit课程进度")
-
-
-
-# 任务日志章节
-
-st.header("📝 任务日志")
-
-mission_data = {
-
+task_data = {
     "日期": ["2023-10-01", "2023-10-05", "2023-10-12"],
-
     "任务": ["学生数字档案", "课程管理系统", "数据图表展示"],
-
-    "状态": ["✅ 完成", "🕒 进行中", "❌ 未完成"],
-
-    "难度": ["★☆☆☆☆", "★★☆☆☆", "★★★☆☆"]
-
+    "状态": ["✅ 完成", "🔄 进行中", "❌ 未完成"],
+    "难度": ["⭐⭐⭐☆☆", "⭐⭐⭐☆☆", "⭐⭐⭐⭐☆"]
 }
 
-mission_df = pd.DataFrame(mission_data)
+# 任务日志表格
+st.header("任务日志")
+st.table(task_data)
 
-st.table(mission_df.style.applymap(
 
-    lambda x: 'color: #0f0' if x == "✅ 完成" else 'color: #ff0')
+st.header("💻 最新代码成果")
+code = """
+def cosmic_navigation():
+    print("启动宇宙导航程序...")
+    # 科幻导航算法实现
+    return "导航坐标已生成"
 
+result = cosmic_navigation()
+print(result)
+"""
+st.code(code, language="python")
+
+import streamlit as st
+
+st.markdown(
+    """
+    >> SYSTEM MESSAGE: 下一个任务目标已解锁...  
+    >> TARGET: 课程管理系统  
+    >> COUNTDOWN: 2025-06-03 15:24:58  
+    系统状态: 在线 连接状态: 已加密  
+    """,
+    unsafe_allow_html=False
 )
-
-
-
-# 代码块展示
-
-st.subheader("🔐 最新代码成果")
-
-st.code('''def matrix_breach():
-
-    while True:
-
-        if detect_vulnerability():
-
-            exploit()
-
-            return "ACCESS GRANTED"
-
-        else:
-
-            stealth_evade()''', language='python')
-
-
-
-# 动态信息流
-
-st.write("---")
-
-st.write("`>> SYSTEM MESSAGE:` 下一个任务目标已解锁...")
-
-st.write("`>> TARGET:` 课程管理系统")
-
-st.write("`>> COUNTDOWN:`", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
-
-
-# 终端效果
-
-st.markdown("""
-
-系统状态: 在线
-
-连接状态: 已加密
-
-""")
-
